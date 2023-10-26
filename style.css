@@ -1,0 +1,214 @@
+@charset "UTF-8";
+
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&display=swap');
+
+  @font-face {
+    font-family: 'Android';
+    src: url(fontes/idroid.otf) format('opentype');
+    font-weight: normal;
+  }
+
+
+/* RAIZ DAS CORES e FONTES para usar como VARIÁVEIS */
+:root {
+    --cor0: #DAE3E5;
+    --cor1: e#4883bbb4;
+    --cor2: #89AAE6;
+    --cor3: #3685B5;
+    --cor4: #0471A6;
+    --cor5: #061826;
+
+    --fonte-padrao: Arial, Verdana, Helvetica, sans-serif;
+    --fonte-destaque: 'Bebas Neue', cursive;
+    --fonte-android: 'Android', cursive;    
+}
+
+/* Abaixo usando "*" como SELETOR GLOBAL para selecinar TODOS os elementos do meu HTML */
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+   background-color:var(--cor0);
+   font-family:var(--fonte-padrao)   
+}
+
+a.externo::after {
+    content: '\1F517';
+    /* Todos os links externos (ja linkados com class="externo" terão o EMOJI 'após' o link */
+} 
+
+header {
+    background-image:linear-gradient(to bottom, var(--cor3), var(--cor5));
+    min-height: 150px;
+    text-align: center;
+    padding-top: 40px;
+}
+
+header > h1 {
+    color:white;
+    font-family: var(--fonte-destaque);
+    font-size: 3em;
+    font-weight: normal; /* retirando o negrito já automatico de todo h1 p/ melhor vizualizaçǎo */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.328);
+}
+
+header > p {
+    font-family: var(--fonte-padrao);
+    font-size: 1.2em;
+    color: white;
+    max-width: 500px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: auto;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.328);
+}
+
+nav {
+    background-color: var(--cor5);
+    padding: 10px;
+    box-shadow:0px 7px 7px rgba(0, 0, 0, 0.364) ;
+}
+
+nav > a {
+    color:var(--cor1);
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: .5s;
+}
+
+nav > a:hover {
+    background-color: var(--cor3);
+    color: var(--cor5);
+}
+
+main {
+    min-width: 300px;
+    max-width: 1000px;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 20px;    
+    background-color: white;
+    box-shadow: 0px 0px 10px #00000041;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+main h1 {
+    color:var(--cor5);
+    font-family: var(--fonte-android);
+    font-weight: normal; /* retirando o negrito já automatico de todo h1 p/ melhor vizualizaçǎo */
+    font-size: 1.8em;
+}
+
+main h2 { 
+    color:var(--cor4);   
+    font-family: var(--fonte-android);
+    font-size: 1.3em;
+    font-weight: normal; /* retirando o negrito já automatico de todo h2 p/ melhor vizualizaçǎo */
+    background-image: linear-gradient(to right, var(--cor1), transparent);
+    text-indent: 8px;
+}
+
+main p {
+    margin: 15px 0px;
+    text-align: justify;
+    text-indent: 30px;
+    font-size: 1em;
+    line-height: 2em;
+}
+
+main strong {
+    color: var(--cor4);
+    font-weight: bold;     
+}
+
+main a {
+   text-decoration: none;
+   font-weight: bold;
+   color: var(--cor5);
+   background-color: var(--cor1);
+   padding: 2px 6px;
+}
+
+main a:hover {
+    text-decoration: underline;
+    color: var(--cor4);
+}
+
+main img {
+    width: 100%;
+}
+
+/* classe criada para a imagem bugdroid, pois nao temos o aquivo de tamanho menor para usar como picture/source */
+main img.pequena {
+    max-width: 350px; /* para fixar o tamanho maximo da imagem e evitar q ela aumente e diminua */
+    display: block;
+    margin: auto;
+}
+
+/* Para redimencionar o video do youtube, temos que envelopar o iframe com uma div */
+div.video {
+    background-color: var(--cor5);    
+    margin: 0px -20px 30px;
+    padding: 20px;
+    padding-bottom: 57%;
+
+    position: relative;
+}
+
+/*  */
+div.video > iframe {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%; 
+}
+
+aside {
+    background-color: var(--cor1);
+    padding: 10px;
+    border-radius: 10px; /* deixa as bordas arredondadas */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.271);
+    /* faz uma sombra branda ao redor do conteúdo */
+}
+
+aside > h3 {
+    background-color: var(--cor4);
+    color: white;
+    padding: 10px;
+    /* abaixo fazemos com que a margem do H3 fique arredondada em cima e ponteaguda embaixo */
+    margin: -10px -10px 0px -10px; /* numeros negativos fazem a margem negativa (so tem tem embaixo) */
+    border-radius: 10px 10px 0px 0px;
+}
+
+aside > ul {
+    list-style-type: '\2714\00A0\00A0'; /* Ao usar EMOJIs como tipo de lista, devemos remover U+ do codigo, tambem utilizamos \00A0 para aidiconar um pequeno espaco */
+    list-style-position: inside; /* faz com que a bolinha venha para o lado de dentro */
+    columns: 2; /* quando a lista é muito grande podemos dividir em 2 colunas */
+}
+
+footer {
+    background-color: var(--cor5);
+    color: white;
+    text-align: center;
+    font-size: 0.8em;
+    padding: 5px;
+}
+
+footer a {
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+footer:hover {
+    text-decoration: underline;
+    color:var(--cor1);
+}
